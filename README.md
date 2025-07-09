@@ -177,3 +177,71 @@ Step 8: Save Rule
 - Click "Save Rule" to apply settings
 
 ```
+## Periodic Data Discovery Task
+```
+Setting Up Periodic Data Discovery in DataSunrise
+
+Purpose:
+Automatically scan for sensitive data at scheduled intervals and update Object Groups.
+
+Step 1: Create a New Task
+- Go to Data Discovery > Periodic Data Discovery
+- Click "+New Periodic Task"
+
+Step 2: Select a Server
+- Choose the server where the task will run
+
+Step 3: Fill General Settings & Search Parameters
+
+Search Parameters:
+- Database Instance: Choose which DB to scan
+- Credentials: Select user credentials for DB connection
+- Save Results in Object Group: Optional — choose a group to store results
+
+Search Strategy (Select Strategy drop-down):
+- Select top rows: Scan only top rows defined by Number of Analyzed Rows
+- Select random rows: Scan random set of rows
+- Select all rows: Scan entire table
+
+Column Match Strategy:
+- Choose how to match column data to search filters
+
+Min Percentage of Match:
+- Minimum % of matched rows to consider a column sensitive
+
+Number of Analyzed Rows:
+- How many rows to scan from each table
+
+Multiprocess Parameters:
+- Execution Strategy:
+    • Single Server
+    • Multiple (stable servers) — for parallel scanning
+
+Database Objects to Search:
+- Database: Choose which DB to scan
+- Schema: Select schema to target
+- Search In: Pick object types to search (e.g. Table, View, Snapshot, etc.)
+- Skip Objects:
+    • Task Definition — manually choose objects to skip
+    • Object Group — auto-skip based on previous group
+
+Tag Criteria on Scanning:
+- Use logical operators to filter tagged objects:
+    • "&" AND, "|" OR, "!" NOT, "()" Grouping
+    • Key-value filters with RegEx (value is optional)
+
+Supported on:
+- Amazon S3, Azure Cloud Storage, Google Cloud
+
+Search Criteria:
+- Search By:
+    • Security standards
+    • Existing Information types (e.g., credit cards, names)
+
+- Search for Attributes:
+    • Select required attribute(s) to match sensitive info
+
+Startup Frequency:
+- Frequency: Choose how often task should run (e.g., Manual, Daily, Weekly)
+
+```
