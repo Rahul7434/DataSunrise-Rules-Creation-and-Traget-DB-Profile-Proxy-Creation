@@ -117,3 +117,63 @@ Step 3: View Security Events
 
 
 ```
+## Setting Up Dynamic Data Masking Rule in DataSunrise
+```
+Setting Up Dynamic Data Masking Rule in DataSunrise
+
+Step 1: Create the Rule
+- Go to Masking > Rules
+- Click "Add Rule" to begin setup
+
+Step 2: Fill Main Section (General Settings)
+- Provide basic details for the rule (e.g., name, target database)
+
+Step 3: Set Action Subsection Parameters
+- Keep Row Count:
+    • Check this to allow masked columns in GROUP BY, WHERE, etc.
+- Mask SELECTs Only:
+    • Check this to mask only SELECT queries
+- Action:
+    • Choose how to handle modification queries on masked columns (e.g., block updates on masked Email column)
+
+Step 4: Configure Filter Sessions
+- Set rules for which sessions to apply masking to (e.g., IPs, users)
+
+Step 5: Masking Settings Subsection
+- Masking Settings By:
+    • Choose mode: Mask Columns, Hide Rows, or Mask Data
+    • For Mask Data, configure Event Tagging first
+
+- Columns to Mask:
+    • Click "Select" and choose columns manually
+    • Use +Add RegEx options to match schema/table/column by pattern
+
+- Masking Method (Mask Data only):
+    • Choose data obfuscation method (refer to internal list)
+
+- Hide Rows/Objects:
+    • Select the target table/collection
+    • Specify conditions to hide data (e.g., LastName ≠ 'Smith')
+
+- Condition Examples:
+    • SQL: LastName = 'Smith' (others hidden)
+    • MongoDB: LastName matches 'Smith'
+    • DynamoDB: LastName Equal String 'Smith'
+
+- Data Filter:
+    • Choose objects and info types to be masked
+    • Data is masked only if info type matches the query
+
+Note:
+- If selected column has relationships (e.g., via Primary Key), system suggests masking related columns too
+
+Step 6: Disable Rule (if not active)
+- Check box to keep rule inactive
+
+Step 7: Add Tags (optional)
+- For rule organization and tracking
+
+Step 8: Save Rule
+- Click "Save Rule" to apply settings
+
+```
